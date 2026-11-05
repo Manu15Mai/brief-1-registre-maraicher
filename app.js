@@ -135,7 +135,64 @@ function synthese(operations) {
   console.log('Rappel : ce sont des dépenses. Sans les revenus, elles ne mesurent pas la rentabilité.');
 }
 
+async function supprimer(operations) {
+  console.log('--- Supprimer une opération ---');
+  const reponse = await demander('Identifiant : ');
+  if (reponse === null) return false;
+  const identifiant = reponse.trim().toUpperCase();
 
+  if (supprimerOperation(operations, identifiant) === undefined) {
+    console.log(`Opération ${identifiant} introuvable.`);
+    return false;
+  }
+
+  await enregistrerJson(FICHIER_DONNEES, operations);
+  console.log(`Opération ${identifiant} supprimée. Le registre compte ${operations.length} opération(s).`);
+  return true;
+}
+
+async function modifier(operations) {
+  console.log('--- Modifier une opération ---');
+
+  // 1. Identifiant, vérifié tout de suite
+  const reponseId = await demander('Identifiant : ');
+  if (reponseId === null) return false;
+  const identifiant = reponseId.trim().toUpperCase();
+
+  if (trouverParId(operations, identifiant) === undefined) {
+    console.log(`Opération ${identifiant} introuvable.`);
+    return false;
+  }
+
+  // 2. Champ à modifier (insensible à la casse)
+  const reponseChamp = await demander(`Champ à modifier (${CHAMPS.join(', ')}) : `);
+  if (reponseChamp === null) return false;
+  const champ = CHAMPS.find(
+    c => c.toLowerCase() === reponseChamp.trim().toLowerCase()
+  );
+  if (champ === undefined) {
+    console.log(`Champ inconnu : ${reponseChamp.trim()}`);
+    return false;
+  }
+
+  // 3. Nouvelle valeur, normalisée comme dans ajouter()
+  const reponseValeur = await demander('Nouvelle valeur : ');
+  if (reponseValeur === null) return false;
+  let valeur = reponseValeur.trim();
+  if (champ === 'parcelle') valeur = valeur.toUpperCase();
+  if (champ === 'culture' || champ === 'operation') valeur = valeur.toLowerCase();
+
+  // 4. Modification et enregistrement
+  const erreurs = modifierOperation(operations, identifiant, champ, valeur);
+  if (erreurs.length > 0) {
+    afficherErreurs('Modification refusée :', erreurs);
+    return false;
+  }
+
+  await enregistrerJson(FICHIER_DONNEES, operations);
+  console.log(`Opération ${identifiant} modifiée.`);
+  return true;
+}
 async function main() {
   ouvrirSaisie();
   afficherAccueil();
@@ -165,6 +222,20 @@ async function main() {
           case '3': await rechercher(operations); break;
           case '4': await trier(operations); break;
           case '5': synthese(operations); break;
+          case '6':
+            console.log('---Tri par coût décroissant---');
+            const triees =trierParCoutDecroissant(operations);
+            console.log(triees); break;
+          case '7':
+             console.log('--- parcelle la plus coûteusse---');
+             const laPlusChere = parcelleLaPlusCouteuse(operations);
+             if (laPlusChere){
+               console.log(`La parcelle la plus coûteuse est ${laPlusChere.parcelle} avec un coût total de ${laPlusChere.total} FCFA`)
+             }
+            else{
+              console.log("Aucune opération disponible.")
+            }
+            break;
           default:
             console.log(`Choix inconnu : « ${choix} ». Tapez un chiffre du menu.`);
         }
