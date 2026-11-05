@@ -4,7 +4,7 @@
 
 ## Contexte
 
-✏️ *En cinq à huit phrases : qui utilise l'outil (son métier, son geste professionnel), son besoin, ce qu'il saisit, ce que le programme lui affiche, ce que l'outil ne fait pas.*
+La responsable d'une exploitation maraîchère pedagogique note ses operations dans un carnet papier. Elle veut saisit dans un terminal chaque operation: un identifiant, une date, la parcelle, la culture, le type d'operation et son coût en FCFA. Le programme affiche un menu pour ajouter, lister, rechercher et trier les operations. Les données sont enregistrées dans `donnees/operation.json` et les saisies invalides sont refusées sans arrêter le programme. L'outil n'enregistre pas les revenus et ne donne pas non également de conseil de culture.
 
 ## Prérequis et lancement
 
@@ -21,24 +21,28 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 
 ## Fonctionnalités
 
-✏️ *Cochez seulement ce qui marche : `- [x]`.*
+ *Cochez seulement ce qui marche : `- [x]`.*
 
-- [ ] Données lues et enregistrées dans `donnees/operations.json`
-- [ ] Ajouter une opération, saisies invalides refusées sans arrêter le programme
-- [ ] Lister les opérations, message si le registre est vide
-- [ ] Rechercher par identifiant ou par parcelle ; filtrer par culture
-- [ ] Trier par coût ou par date
-- [ ] Synthèse : total, nombre et total par parcelle, coût minimum et maximum
-- [ ] Bonus : supprimer et modifier une opération (choix 6 et 7)
-- [ ] Bonus : tri par coût décroissant, parcelle la plus coûteuse
+- [x] Données lues et enregistrées dans `donnees/operations.json`
+- [x] Ajouter une opération, saisies invalides refusées sans arrêter le programme
+- [x] Lister les opérations, message si le registre est vide
+- [x] Rechercher par identifiant ou par parcelle ; filtrer par culture
+- [x] Trier par coût ou par date
+- [x] Synthèse : total, nombre et total par parcelle, coût minimum et maximum
+- [x] Bonus : supprimer et modifier une opération (choix 6 et 7)
+- [x] Bonus : tri par coût décroissant, parcelle la plus coûteuse
 
 ## Données
 
-✏️ *Le fichier, le nombre d'opérations, les champs (voir [docs/dictionnaire-donnees.md](docs/dictionnaire-donnees.md)), les unités. Rappelez qu'elles sont fictives.*
+ *Le fichier, le nombre d'opérations, les champs (voir [docs/dictionnaire-donnees.md](docs/dictionnaire-donnees.md)), les unités. Rappelez qu'elles sont fictives.*
+
+ Le fichier: `donnees/operations.json`, nombre d'opération: 10, les champs: 6 champs, les unittés: les coûts en FCFA et les données sont fictives.
 
 ## Limites
 
-✏️ *Au moins trois. Par exemple : le registre enregistre des dépenses, pas les revenus, il ne mesure donc pas la rentabilité.*
+ *Au moins trois. Par exemple : le registre enregistre des dépenses, pas les revenus, il ne mesure donc pas la rentabilité.*
+ 
+Il n'y a pas de quantité récoltée, ni de surface des parcelles: les parcelles ne peuvent pas être comparer entre elles. *La liste des operations est fermée: une autre intervention ne peut pas être enregistrée.* Le même identifiant ne peut pas être enregistrer deux fois.
 
 ## Documents
 
@@ -46,4 +50,7 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 
 ## Auteur
 
-✏️ *Prénom NOM, compte GitHub. Entraide : avec qui, sur quoi.*
+ *Prénom NOM, compte GitHub. Entraide : avec qui, sur quoi.*
+ Prénom Nom: MARIE-MANUELA SABINE AMENAN DALY
+ Compte GitHub: Manu15Mai
+ Entraide: MAMADOU VEHI EVELYNE pour l'explication de certaines fonctions
