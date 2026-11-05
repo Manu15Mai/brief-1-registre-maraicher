@@ -11,11 +11,12 @@ P3       | 3 opérations: 5000+4000+6000     | 15000FCFA
 
 | Action | Attendu | Obtenu | Testeur |
 | --- | --- | --- | --- |
-| Ajouter 011 valide |operation ajoutée  |Opération 011 ajoutée, Le registre compte 11 opérations |moi |
-| Ajouter avec id 003 | i'operation est refusé |Opération 003 introuvable | moi|
-| Recherche culture tomate |nombre d'operation  |5 opérations pour la culture tomate |moi |
-| Trier par coût croissant | Du plus petit au plus grand |Commence par 1500FCFA et finit par 8000FCFA  |moi |
+| Ajouter 011 valide |operation ajoutée  |Opération 011 ajoutée, Le registre compte 11 opérations |Serifou cheick oumar|
+| Ajouter avec id 003 | i'operation est refusé |Opération 003 introuvable | Serifou cheick oumar|
+| Recherche culture tomate |nombre d'operation  |5 opérations pour la culture tomate | Serifou cheick oumar|
+| Trier par coût croissant | Du plus petit au plus grand |Commence par 1500FCFA et finit par 8000FCFA  | Serifou cheick oumar|
 | Synthèse | Coût total des 11 operations |Coût total: 42500 | moi|
-| Ajouter année |Ajouter date format JJ-MM-AAAA |Choix inconnu : « 02-11-2026 ». Tapez un chiffre du menu. |moi |
+| Ajouter année |Ajouter date format JJ-MM-AAAA |Choix inconnu : « 02-11-2026 ». Tapez un chiffre du menu. |Serifou cheick oumar |
 
 **Sur un autre poste** (`git clone`, `node app.js`, `npm test`, en suivant le README) : ✏️
+Serifou cheick oumar
